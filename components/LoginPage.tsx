@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { useAuth } from './AuthContext';
-import { api } from './api'; // Assuming you have an api service for auth
+import { useAuth } from '../services/AuthContext';
+import { api } from '../services/api';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');

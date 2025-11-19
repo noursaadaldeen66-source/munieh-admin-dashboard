@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api from '../services/api'; // Assuming you have an API service
+import { api } from '../services/api'; // Assuming you have an API service
 import { User } from '../types'; // Assuming you have a User type defined
 
 const UpgradeRequests: React.FC = () => {

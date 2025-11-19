@@ -12,7 +12,10 @@ import UpgradeRequests from './components/UpgradeRequests';
 import BuyerUpgradeRequest from './components/BuyerUpgradeRequest';
 import LiveMap from './components/LiveMap';
 import TicketSystem from './components/TicketSystem';
-// ...
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/" element={<ProtectedRoute />}>
         <Route index element={<Navigate to="/dashboard" replace />} />
         <Route path="dashboard" element={<DashboardStats />} />
@@ -21,7 +24,11 @@ import TicketSystem from './components/TicketSystem';
         <Route path="upgrade-requests" element={<UpgradeRequests />} />
         <Route path="my-upgrade-request" element={<BuyerUpgradeRequest />} />
         <Route path="products" element={<ProductManagement />} />
-// ...
+        <Route path="services" element={<ServiceManagement />} />
+        <Route path="stories" element={<StoryManagement />} />
+        <Route path="map" element={<LiveMap />} />
+        <Route path="tickets" element={<TicketSystem />} />
+      </Route>
     </Routes>
   );
 };

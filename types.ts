@@ -83,5 +83,30 @@ export interface IOrder {
   updatedAt: string;
 }
 
+export enum TicketStatus {
+  PENDING = 'pending',
+  APPROVED = 'approved',
+  REJECTED = 'rejected',
+}
+
+export interface SupportTicket {
+  _id: string;
+  farmerId: string;
+  farmerName: string;
+  subject: string;
+  details: string;
+  type: 'DirectShipping' | 'GeneralSupport';
+  status: TicketStatus;
+  createdAt: string;
+}
+
+export interface IUpgradeRequest {
+  _id: string;
+  user: IUser;
+  message: string;
+  status: 'pending' | 'approved' | 'rejected';
+  createdAt: string;
+}
+
 // Represents the different pages/views in the admin dashboard
 export type ViewState = 'dashboard' | 'map' | 'tickets' | 'users' | 'products' | 'services' | 'stories' | 'mobile-app';

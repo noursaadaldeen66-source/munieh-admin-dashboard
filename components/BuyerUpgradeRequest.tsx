@@ -1,10 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
-import api from '../services/api';
-import { AuthContext } from '../services/AuthContext'; // Assuming AuthContext provides user info
+import React, { useState, useEffect } from 'react';
+import { api } from '../services/api';
+import { useAuth } from '../services/AuthContext';
 import { IUser } from '../types'; // Import IUser for type checking
 
 const BuyerUpgradeRequest: React.FC = () => {
-  const { user, fetchUser } = useContext(AuthContext); // Assuming AuthContext provides user and a way to refetch
+  const { user, fetchUser } = useAuth(); // Assuming AuthContext provides user and a way to refetch
   const [message, setMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [submitError, setSubmitError] = useState<string | null>(null);

@@ -33,7 +33,23 @@ const UserForm: React.FC<UserFormProps> = ({ user, onClose, onSave }) => {
     const userData = { name, email, bio, profileImage, role };
 
     try {
-// ...
+      if (user) {
+        await api.put(`/users/${user._id}`, userData);
+      } else {
+        await api.post('/users', userData);
+      }
+      onSave(userData as any); // Assuming the backend returns the full user object
+    } catch (error) {
+      console.error("Failed to save user:", error);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-lg">
+        <h2 className="text-xl font-semibold mb-4">{user ? 'Edit Producer' : 'Add Producer'}</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input type="text" placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} required className="w-full p-2 border rounded" />
           <input type="email" placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} required className="w-full p-2 border rounded" />
           <textarea placeholder="Biography" value={bio} onChange={e => setBio(e.target.value)} className="w-full p-2 border rounded" />
           <input type="text" placeholder="Profile Image URL" value={profileImage} onChange={e => setProfileImage(e.target.value)} className="w-full p-2 border rounded" />
@@ -48,7 +64,6 @@ const UserForm: React.FC<UserFormProps> = ({ user, onClose, onSave }) => {
           </div>
 
           <div className="flex justify-end space-x-3 pt-4">
-// ...
             <button type="button" onClick={onClose} className="px-4 py-2 text-gray-700 font-medium hover:bg-gray-100 rounded-lg">Cancel</button>
             <button type="submit" className="px-4 py-2 bg-brand-600 text-white font-medium rounded-lg hover:bg-brand-700">Save Producer</button>
           </div>
